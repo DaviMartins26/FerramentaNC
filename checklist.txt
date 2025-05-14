@@ -1,0 +1,3 @@
+Titulo do Projeto Presente?;Adequado
+Cronograma Definido?;Não Adequado
+Descri��o do Escopo do Projeto Definida?;Não se Aplica
