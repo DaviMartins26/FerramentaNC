@@ -15,7 +15,7 @@ public class Main {
             System.out.println("4 - Exibir Checklist");
             System.out.println("5 - Exibir NCs");
             System.out.println("6 - Calcular Aderência");
-            System.out.println("7 - Resolver NC e Calcular Aderência");
+            System.out.println("7 - Resolver NC");
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
 

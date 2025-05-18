@@ -1,1 +1,2 @@
-Cronograma Definido?;Cronograma para definir;Davi;2025-05-16;false
+Objetivo do Projeto esta definido?;Nao esta definidio;Stella;Alto-2 Dias Uteis;2025-05-20;true
+O projeto apresenta cliclos de vida?;Nao ha o cliclo de vida;Davi;Media-3 Dias Uteis;2025-05-21;true

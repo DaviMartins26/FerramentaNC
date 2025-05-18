@@ -91,17 +91,26 @@ public class Auditoria {
         scanner.nextLine();
 
         int dias;
-        if (classif == 1) dias = 2;
-        else if (classif == 2) dias = 3;
-        else dias = 5;
+        String classificacao;
+
+        if (classif == 1) {
+            dias = 2;
+            classificacao = "Alto-2 Dias Uteis";
+        } else if (classif == 2) {
+            dias = 3;
+            classificacao = "Media-3 Dias Uteis";
+        } else {
+            dias = 5;
+            classificacao = "Baixa-5 Dias Uteis";
+        }
 
         String prazo = LocalDate.now().plusDays(dias).toString();
 
-        registrarNC(itemRelacionado, descricao, responsavel, prazo);
+        registrarNC(itemRelacionado, descricao, responsavel,classificacao, prazo);
     }
 
-    public void registrarNC(String item, String descricao, String responsavel, String prazo) {
-        NaoConformidade nc = new NaoConformidade(item, descricao, responsavel, prazo);
+    public void registrarNC(String item, String descricao, String responsavel,String classificacao, String prazo) {
+        NaoConformidade nc = new NaoConformidade(item, descricao, responsavel,classificacao, prazo);
         nc.comunicar();
         ncs.add(nc);
         salvarDados();
@@ -133,15 +142,31 @@ public class Auditoria {
         System.out.printf("✔ Aderência: %.2f%% (%d/%d itens adequados)\n", percentual, adequados, total);
     }
 
-    public void resolverNCManual(Scanner scanner) {
-        exibirNCs();
-        System.out.print("Informe o número da NC a ser resolvida: ");
-        int i = scanner.nextInt();
-        scanner.nextLine();
-        if (i >= 1 && i <= ncs.size()) {
-            ncs.get(i - 1).resolver();
-            salvarDados();
-            System.out.println("NC resolvida.");
+public void resolverNCManual(Scanner scanner) {
+    exibirNCs();
+    System.out.print("Informe o número da NC a ser resolvida: ");
+    int i = scanner.nextInt();
+    scanner.nextLine();
+
+    if (i >= 1 && i <= ncs.size()) {
+        NaoConformidade nc = ncs.get(i - 1);
+        nc.resolver(); // só marca como resolvido
+
+        // Agora busca o item da checklist com a mesma descrição da NC
+        String descricaoNC = nc.getItemRelacionado();
+
+        for (ChecklistItem item : checklist) {
+            if (item.getDescricao().equalsIgnoreCase(descricaoNC)) {
+                item.adequar(); // marca como adequado
+                break; // encontrou, sai do loop
+            }
         }
+
+        salvarDados();
+        System.out.println("NC resolvida.");
+    } else {
+        System.out.println("Número inválido.");
     }
+}
+
 }

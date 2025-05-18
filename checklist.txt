@@ -1,3 +1,6 @@
-Titulo do Projeto Presente?;Adequado
-Cronograma Definido?;Não Adequado
-Descri��o do Escopo do Projeto Definida?;Não se Aplica
+O Titulo do projeto esta difinido?;Adequado
+Visão do projeto está definida?;Adequado
+Objetivo do Projeto esta definido?;Adequado
+O projeto apresenta cliclos de vida?;Adequado
+O projeto apresenta Cronograma?;Não Adequado
+O Cronograma esta detalhado?;Não se Aplica

@@ -18,4 +18,10 @@ public class ChecklistItem {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public void adequar() {
+        this.status = "Adequado";
+    }
+
+
 }
